@@ -11,8 +11,16 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style type="text/tailwindcss">
+      body {
+        @pply bg-mauve-100;
+      }
+
       header {
         @apply pt-8 px-[9%] pb-[42px] md:py-[3%] md:px-[20%];
+      }
+
+      header h1 {
+        @apply text-6xl md:text-8xl font-serif text-center tracking-tighter text-mauve-600;
       }
 
       section {
@@ -20,15 +28,19 @@
       }
 
       section h2 {
-        @apply mt-8;
+        @apply mt-8 text-3xl md:text-4xl font-serif font-bold tracking-tight text-mauve-500;
       }
 
       section h3 {
-        @apply mt-6;
+        @apply mt-6 text-2xl md:text-3xl font-serif font-bold text-mauve-500;
       }
 
       section p {
-        @apply mb-4;
+        @apply mb-4 text-base md:text-lg leading-8 text-slate-700;
+      }
+
+      a {
+        @pply text-mauve-600;
       }
     </style>
 
@@ -105,13 +117,14 @@
           beating heart in the hundreds of thousands of breasts there, is, in
           some of its imaginings, a secret to the heart nearest it!
         </p>
+
         <p>
-          by <i>"Charles Dickens"</i>, published by <b>Chapman and Hall,</b> in
-          1859.
+          by <i>"Charles Dickens"</i>, published by
+          <b>"Chapman and Hall",</b> in 1859.
         </p>
+        <p><a href="../index.html">Back to Home page</a></p>
       </section>
     </main>
-    <p><a href="../index.html">Back to Home page</a></p>
+    <!-- This is a comment it is working -->
   </body>
 </html>
-<!-- This is a comment it is working -->

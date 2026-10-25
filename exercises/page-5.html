@@ -3,14 +3,23 @@
   <head>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style type="text/tailwindcss">
+      html {
+        height: 100%;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
+        scroll-behavior: smooth;
+        scroll-padding-top: 20px;
+      }
+
       header {
         @apply flex flex-col justify-around items-center w-full mx-auto
         bg-green-300
         px-12 lg:px-60 py-8 lg:py-14;
       }
       header h1 {
-        @apply text-6xl md:text-7xl tracking-tight text-center
-        mb-8 lg:mb-12;
+        @apply text-6xl md:text-6xl tracking-tight text-center
+        mb-5 lg:mb-12;
       }
 
       h1,
@@ -24,7 +33,7 @@
 
       section {
         @apply bg-green-200
-            px-12 lg:px-68 
+            px-12 lg:px-68
             pt-4 pb-12 lg:pt-8 lg:pb-18;
       }
 
@@ -57,7 +66,7 @@
       }
 
       section img {
-        @apply mb-5 rounded-[25px];
+        @apply mt-3 mb-3 rounded-[25px];
       }
 
       header *:last-child {
@@ -65,6 +74,13 @@
       }
       section *:last-child {
         @apply mb-0!;
+      }
+
+      a {
+        @apply text-green-800 underline
+       hover:text-green-600
+       focus:text-green-600
+       transition-colors duration-300;
       }
     </style>
 
@@ -115,8 +131,9 @@
       <p>
         What are Ireland's most popular tourist attractions? According to a
         report by the
-        <a href="https://www.discoverireland.ie/">Irish Tourist Board</a>, the
-        top five paid visitor attractions are those listed below.
+        <a href="https://www.discoverireland.ie/" target="_blank"
+          >Irish Tourist Board</a
+        >, the top five paid visitor attractions are those listed below.
       </p>
 
       <img
@@ -154,7 +171,9 @@
         <p class="highlight-text">
           <span>Annual Number of Visitors: <b>1,711,281</b></span>
         </p>
-        <p><a href="#top-of-page">Return to top of page</a></p>
+        <p>
+          <a href="#top-of-page"><b>Return to top of page</b></a>
+        </p>
 
         <h2 id="cliffs-of-moher">Cliffs of Moher, Co. Clare</h2>
 
@@ -178,7 +197,9 @@
         <p class="highlight-text">
           <span>Annual Number of Visitors: <b>1,527,000</b></span>
         </p>
-        <p><a href="#top-of-page">Return to top of page</a></p>
+        <p>
+          <a href="#top-of-page"><b>Return to top of page</b></a>
+        </p>
 
         <h2 id="dublin-zoo">Dublin Zoo</h2>
 
@@ -200,7 +221,9 @@
         <p class="highlight-text">
           <span>Annual Number of Visitors: <b>1,264,300</b></span>
         </p>
-        <p><a href="#top-of-page">Return to top of page</a></p>
+        <p>
+          <a href="#top-of-page"><b>Return to top of page</b></a>
+        </p>
 
         <h2 id="aquatic-centre">National Aquatic Centre, Dublin</h2>
 
@@ -224,7 +247,9 @@
         <p class="highlight-text">
           <span>Annual Number of Visitors: <b>1,099,756</b></span>
         </p>
-        <p><a href="#top-of-page">Return to top of page</a></p>
+        <p>
+          <a href="#top-of-page"><b>Return to top of page</b></a>
+        </p>
 
         <h2 id="kells-tcd">
           Book of Kells Exhibition, Trinity College, Dublin
@@ -248,7 +273,9 @@
         <p class="highlight-text">
           <span>Annual Number of Visitors: <b>983,410</b></span>
         </p>
-        <p><a href="#top-of-page">Return to top of page</a></p>
+        <p>
+          <a href="#top-of-page"><b>Return to top of page</b></a>
+        </p>
         <p><a href="../index.html">Back to Home page</a></p>
       </section>
     </main>

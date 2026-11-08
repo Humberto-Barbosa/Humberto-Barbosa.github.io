@@ -1,10 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hero Block Generator</title>
-    <meta name="description" content="Short, unique description of web page. Often used as the snippet shown in search results. About 120 characters is ideal.">
+    <meta
+      name="description"
+      content="Short, unique description of web page. Often used as the snippet shown in search results. About 120 characters is ideal."
+    />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
     <!-- HERO STYLES: shared by the preview and the exported page -->
@@ -53,6 +56,27 @@
       }
     </style>
 
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/img/favicons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/img/favicons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/img/favicons/favicon-16x16.png"
+    />
+    <link rel="manifest" href="assets/img/favicons/site.webmanifest" />
+
+    <!--Jose Humberto Barbosa 71693-->
+
     <!-- EDITOR STYLES: only used by the app, never exported -->
     <style type="text/tailwindcss" id="editor-styles">
       .editor-page {
@@ -99,10 +123,18 @@
 
   <body class="editor-page">
     <div class="editor-panel" role="group" aria-label="Hero settings">
-      <label class="editor-option"><input type="checkbox" id="opt-dark" /> Dark appearance</label>
-      <label class="editor-option"><input type="checkbox" id="opt-centre" /> Centre text</label>
-      <label class="editor-option"><input type="checkbox" id="opt-height" checked /> Minimum height</label>
-      <label class="editor-option"><input type="checkbox" id="opt-sub" checked /> Show subheading</label>
+      <label class="editor-option"
+        ><input type="checkbox" id="opt-dark" /> Dark appearance</label
+      >
+      <label class="editor-option"
+        ><input type="checkbox" id="opt-centre" /> Centre text</label
+      >
+      <label class="editor-option"
+        ><input type="checkbox" id="opt-height" checked /> Minimum height</label
+      >
+      <label class="editor-option"
+        ><input type="checkbox" id="opt-sub" checked /> Show subheading</label
+      >
     </div>
 
     <p class="editor-hint" id="edit-hint">Click a heading to edit the text.</p>
@@ -110,35 +142,49 @@
     <!-- The hero: the part that gets exported -->
     <header class="hero hero-light hero-min-height" id="hero">
       <div class="hero-content">
-        <h1 id="hero-h1" contenteditable="true" aria-describedby="edit-hint">Lorem ipsum dolor sit amet</h1>
-        <h2 id="hero-h2" contenteditable="true" aria-describedby="edit-hint">Consectetur adipiscing elit. Integer vitae libero ac risus egestas placerat.</h2>
+        <h1 id="hero-h1" contenteditable="true" aria-describedby="edit-hint">
+          Lorem ipsum dolor sit amet
+        </h1>
+        <h2 id="hero-h2" contenteditable="true" aria-describedby="edit-hint">
+          Consectetur adipiscing elit. Integer vitae libero ac risus egestas
+          placerat.
+        </h2>
       </div>
     </header>
 
     <p class="editor-status" id="status" role="status" aria-live="polite"></p>
 
     <div class="editor-fallback" id="fallback" hidden>
-      <label for="fallback-text">Copy this HTML manually (select all, then copy):</label>
+      <label for="fallback-text"
+        >Copy this HTML manually (select all, then copy):</label
+      >
       <textarea id="fallback-text" readonly></textarea>
     </div>
 
-    <button type="button" class="copy-button" id="copy-button">Copy HTML</button>
+    <button type="button" class="copy-button" id="copy-button">
+      Copy HTML
+    </button>
 
     <script>
       // Settings: one true/false value per checkbox
-      const settings = { dark: false, centre: false, minHeight: true, showSubheading: true };
+      const settings = {
+        dark: false,
+        centre: false,
+        minHeight: true,
+        showSubheading: true,
+      };
 
-      const hero = document.getElementById('hero');
-      const h1 = document.getElementById('hero-h1');
-      const h2 = document.getElementById('hero-h2');
-      const statusBox = document.getElementById('status');
-      const fallbackBox = document.getElementById('fallback');
-      const fallbackText = document.getElementById('fallback-text');
+      const hero = document.getElementById("hero");
+      const h1 = document.getElementById("hero-h1");
+      const h2 = document.getElementById("hero-h2");
+      const statusBox = document.getElementById("status");
+      const fallbackBox = document.getElementById("fallback");
+      const fallbackText = document.getElementById("fallback-text");
       const checkboxes = {
-        dark: document.getElementById('opt-dark'),
-        centre: document.getElementById('opt-centre'),
-        minHeight: document.getElementById('opt-height'),
-        showSubheading: document.getElementById('opt-sub'),
+        dark: document.getElementById("opt-dark"),
+        centre: document.getElementById("opt-centre"),
+        minHeight: document.getElementById("opt-height"),
+        showSubheading: document.getElementById("opt-sub"),
       };
 
       // Read each checkbox's checked property (true or false)
@@ -151,55 +197,63 @@
       // Turn named classes on or off. The heading elements are never replaced,
       // so the edited text and cursor position are kept.
       function applySettings() {
-        hero.classList.toggle('hero-dark', settings.dark);
-        hero.classList.toggle('hero-light', !settings.dark);
-        hero.classList.toggle('hero-centre', settings.centre);
-        hero.classList.toggle('hero-min-height', settings.minHeight);
+        hero.classList.toggle("hero-dark", settings.dark);
+        hero.classList.toggle("hero-light", !settings.dark);
+        hero.classList.toggle("hero-centre", settings.centre);
+        hero.classList.toggle("hero-min-height", settings.minHeight);
         h2.hidden = !settings.showSubheading;
       }
 
       // Escape text so &, < and > stay as text in the exported HTML
       function escapeHtml(text) {
-        return text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        return text
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;");
       }
 
       // Build the complete standalone page as a string
       function buildExportHtml() {
         const heroClasses = [
-          'hero',
-          settings.dark ? 'hero-dark' : 'hero-light',
-          settings.centre ? 'hero-centre' : '',
-          settings.minHeight ? 'hero-min-height' : '',
-        ].filter(Boolean).join(' ');
+          "hero",
+          settings.dark ? "hero-dark" : "hero-light",
+          settings.centre ? "hero-centre" : "",
+          settings.minHeight ? "hero-min-height" : "",
+        ]
+          .filter(Boolean)
+          .join(" ");
 
         const subheading = settings.showSubheading
-          ? '\n      <h2>' + escapeHtml(h2.textContent.trim()) + '</h2>'
-          : '';
-        const css = document.getElementById('hero-styles').textContent.trim();
+          ? "\n      <h2>" + escapeHtml(h2.textContent.trim()) + "</h2>"
+          : "";
+        const css = document.getElementById("hero-styles").textContent.trim();
 
         return [
-          '<!DOCTYPE html>',
+          "<!DOCTYPE html>",
           '<html lang="en">',
-          '  <head>',
+          "  <head>",
           '    <meta charset="UTF-8" />',
           '    <meta name="viewport" content="width=device-width, initial-scale=1.0" />',
-          '    <title>Hero Block</title>',
+          "    <title>Hero Block</title>",
           '    <meta name="description" content="Short, unique description of web page. Often used as the snippet shown in search results. About 120 characters is ideal.">',
           '    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"><\/script>',
           '    <style type="text/tailwindcss">',
           css,
-          '    </style>',
-          '  </head>',
-          '  <body>',
+          "    </style>",
+          "  </head>",
+          "  <body>",
           '    <header class="' + heroClasses + '">',
           '      <div class="hero-content">',
-          '      <h1>' + escapeHtml(h1.textContent.trim()) + '</h1>' + subheading,
-          '      </div>',
-          '    </header>',
-          '  </body>',
-          '</html>',
-          '',
-        ].join('\n');
+          "      <h1>" +
+            escapeHtml(h1.textContent.trim()) +
+            "</h1>" +
+            subheading,
+          "      </div>",
+          "    </header>",
+          "  </body>",
+          "</html>",
+          "",
+        ].join("\n");
       }
 
       // Keep the manual-copy textarea up to date
@@ -214,10 +268,11 @@
         try {
           await navigator.clipboard.writeText(html);
           fallbackBox.hidden = true;
-          statusBox.textContent = 'HTML copied—paste it into VS Code.';
+          statusBox.textContent = "HTML copied—paste it into VS Code.";
         } catch (error) {
           fallbackBox.hidden = false;
-          statusBox.textContent = 'Automatic copy is unavailable. Copy the HTML from the box below.';
+          statusBox.textContent =
+            "Automatic copy is unavailable. Copy the HTML from the box below.";
           fallbackText.focus();
           fallbackText.select();
         }
@@ -225,19 +280,21 @@
 
       // Editable headings: plain text only, one line only
       function makePlainText(heading) {
-        heading.addEventListener('paste', function (event) {
+        heading.addEventListener("paste", function (event) {
           event.preventDefault();
-          const text = event.clipboardData.getData('text/plain').replace(/\s+/g, ' ');
-          document.execCommand('insertText', false, text);
+          const text = event.clipboardData
+            .getData("text/plain")
+            .replace(/\s+/g, " ");
+          document.execCommand("insertText", false, text);
         });
-        heading.addEventListener('keydown', function (event) {
-          if (event.key === 'Enter') event.preventDefault();
+        heading.addEventListener("keydown", function (event) {
+          if (event.key === "Enter") event.preventDefault();
         });
-        heading.addEventListener('input', refreshFallback);
+        heading.addEventListener("input", refreshFallback);
       }
 
       for (const name in checkboxes) {
-        checkboxes[name].addEventListener('change', function () {
+        checkboxes[name].addEventListener("change", function () {
           readSettings();
           applySettings();
           refreshFallback();
@@ -245,7 +302,9 @@
       }
       makePlainText(h1);
       makePlainText(h2);
-      document.getElementById('copy-button').addEventListener('click', copyHtml);
+      document
+        .getElementById("copy-button")
+        .addEventListener("click", copyHtml);
 
       readSettings();
       applySettings();

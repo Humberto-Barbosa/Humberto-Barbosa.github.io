@@ -1,10 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hero Block Generator</title>
-    <meta name="description" content="Short, unique description of web page. Often used as the snippet shown in search results. About 120 characters is ideal.">
+    <meta
+      name="description"
+      content="Short, unique description of web page. Often used as the snippet shown in search results. About 120 characters is ideal."
+    />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
     <!-- HERO STYLES: shared by the preview and the exported page -->
@@ -60,6 +63,27 @@
         @apply font-serif;
       }
     </style>
+
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/img/favicons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/img/favicons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/img/favicons/favicon-16x16.png"
+    />
+    <link rel="manifest" href="assets/img/favicons/site.webmanifest" />
+
+    <!--Jose Humberto Barbosa 71693-->
 
     <!-- LETTER SPACING: rewritten by JavaScript and also exported -->
     <style id="hero-spacing">
@@ -215,29 +239,57 @@
 
   <body class="editor-page">
     <div class="editor-panel" role="group" aria-label="Hero settings">
-      <label class="editor-option"><input type="checkbox" id="opt-dark" /> Dark appearance preset</label>
-      <label class="editor-option"><input type="checkbox" id="opt-centre" /> Centre text</label>
-      <label class="editor-option"><input type="checkbox" id="opt-height" checked /> Minimum height</label>
-      <label class="editor-option"><input type="checkbox" id="opt-sub" checked /> Show subheading</label>
-      <label class="editor-option"><input type="checkbox" id="opt-gradient" /> Gradient background</label>
+      <label class="editor-option"
+        ><input type="checkbox" id="opt-dark" /> Dark appearance preset</label
+      >
+      <label class="editor-option"
+        ><input type="checkbox" id="opt-centre" /> Centre text</label
+      >
+      <label class="editor-option"
+        ><input type="checkbox" id="opt-height" checked /> Minimum height</label
+      >
+      <label class="editor-option"
+        ><input type="checkbox" id="opt-sub" checked /> Show subheading</label
+      >
+      <label class="editor-option"
+        ><input type="checkbox" id="opt-gradient" /> Gradient background</label
+      >
     </div>
 
     <div class="editor-effects">
       <fieldset class="editor-group" id="h1-effects">
         <legend>H1 text effects</legend>
-        <label class="editor-option"><input type="checkbox" id="opt-h1-serif" /> Serif font</label>
+        <label class="editor-option"
+          ><input type="checkbox" id="opt-h1-serif" /> Serif font</label
+        >
         <div class="editor-slider">
           <label for="h1-spacing">Letter spacing</label>
-          <input type="range" id="h1-spacing" min="-0.05" max="0.1" step="0.005" value="-0.05" />
+          <input
+            type="range"
+            id="h1-spacing"
+            min="-0.05"
+            max="0.1"
+            step="0.005"
+            value="-0.05"
+          />
           <output id="h1-spacing-value" for="h1-spacing">-0.05em</output>
         </div>
       </fieldset>
       <fieldset class="editor-group" id="h2-effects">
         <legend>H2 text effects</legend>
-        <label class="editor-option"><input type="checkbox" id="opt-h2-serif" /> Serif font</label>
+        <label class="editor-option"
+          ><input type="checkbox" id="opt-h2-serif" /> Serif font</label
+        >
         <div class="editor-slider">
           <label for="h2-spacing">Letter spacing</label>
-          <input type="range" id="h2-spacing" min="-0.05" max="0.1" step="0.005" value="-0.025" />
+          <input
+            type="range"
+            id="h2-spacing"
+            min="-0.05"
+            max="0.1"
+            step="0.005"
+            value="-0.025"
+          />
           <output id="h2-spacing-value" for="h2-spacing">-0.025em</output>
         </div>
       </fieldset>
@@ -245,11 +297,49 @@
 
     <section class="editor-palette" aria-label="Colour palette">
       <div class="palette-targets" role="group" aria-label="Colour target">
-        <button type="button" class="target-button" data-target="background" aria-pressed="true">Background</button>
-        <button type="button" class="target-button" data-target="start" aria-pressed="false" hidden>Start colour</button>
-        <button type="button" class="target-button" data-target="end" aria-pressed="false" hidden>End colour</button>
-        <button type="button" class="target-button" data-target="h1" aria-pressed="false">H1</button>
-        <button type="button" class="target-button" id="target-h2" data-target="h2" aria-pressed="false">H2</button>
+        <button
+          type="button"
+          class="target-button"
+          data-target="background"
+          aria-pressed="true"
+        >
+          Background
+        </button>
+        <button
+          type="button"
+          class="target-button"
+          data-target="start"
+          aria-pressed="false"
+          hidden
+        >
+          Start colour
+        </button>
+        <button
+          type="button"
+          class="target-button"
+          data-target="end"
+          aria-pressed="false"
+          hidden
+        >
+          End colour
+        </button>
+        <button
+          type="button"
+          class="target-button"
+          data-target="h1"
+          aria-pressed="false"
+        >
+          H1
+        </button>
+        <button
+          type="button"
+          class="target-button"
+          id="target-h2"
+          data-target="h2"
+          aria-pressed="false"
+        >
+          H2
+        </button>
       </div>
       <div class="editor-direction" id="direction-box" hidden>
         <label for="gradient-direction">Direction</label>
@@ -261,7 +351,12 @@
         </select>
       </div>
       <p class="palette-selected" id="palette-selected" aria-live="polite"></p>
-      <div class="palette" id="palette" role="group" aria-label="Tailwind colours"></div>
+      <div
+        class="palette"
+        id="palette"
+        role="group"
+        aria-label="Tailwind colours"
+      ></div>
     </section>
 
     <p class="editor-hint" id="edit-hint">Click a heading to edit the text.</p>
@@ -269,69 +364,140 @@
     <!-- The hero: the part that gets exported -->
     <header class="hero hero-light hero-min-height" id="hero">
       <div class="hero-content">
-        <h1 id="hero-h1" contenteditable="true" aria-describedby="edit-hint">Lorem ipsum dolor sit amet</h1>
-        <h2 id="hero-h2" contenteditable="true" aria-describedby="edit-hint">Consectetur adipiscing elit. Integer vitae libero ac risus egestas placerat.</h2>
+        <h1 id="hero-h1" contenteditable="true" aria-describedby="edit-hint">
+          Lorem ipsum dolor sit amet
+        </h1>
+        <h2 id="hero-h2" contenteditable="true" aria-describedby="edit-hint">
+          Consectetur adipiscing elit. Integer vitae libero ac risus egestas
+          placerat.
+        </h2>
       </div>
     </header>
 
     <p class="editor-status" id="status" role="status" aria-live="polite"></p>
 
     <div class="editor-fallback" id="fallback" hidden>
-      <label for="fallback-text">Copy this HTML manually (select all, then copy):</label>
+      <label for="fallback-text"
+        >Copy this HTML manually (select all, then copy):</label
+      >
       <textarea id="fallback-text" readonly></textarea>
     </div>
 
-    <button type="button" class="copy-button" id="copy-button">Copy HTML</button>
+    <button type="button" class="copy-button" id="copy-button">
+      Copy HTML
+    </button>
 
     <script>
       // Settings: one true/false value per checkbox
       const settings = {
-        dark: false, centre: false, minHeight: true, showSubheading: true,
-        h1Serif: false, h2Serif: false, h1Spacing: -0.05, h2Spacing: -0.025,
-        bgColour: 'slate-50', h1Colour: 'slate-900', h2Colour: 'slate-700',
-        paletteTarget: 'background',
-        gradientOn: false, gradStart: 'slate-50', gradEnd: 'blue-500', gradDirection: 'to right',
+        dark: false,
+        centre: false,
+        minHeight: true,
+        showSubheading: true,
+        h1Serif: false,
+        h2Serif: false,
+        h1Spacing: -0.05,
+        h2Spacing: -0.025,
+        bgColour: "slate-50",
+        h1Colour: "slate-900",
+        h2Colour: "slate-700",
+        paletteTarget: "background",
+        gradientOn: false,
+        gradStart: "slate-50",
+        gradEnd: "blue-500",
+        gradDirection: "to right",
         gradientStarted: false, // becomes true the first time the gradient is switched on
       };
 
-      const hero = document.getElementById('hero');
-      const h1 = document.getElementById('hero-h1');
-      const h2 = document.getElementById('hero-h2');
-      const statusBox = document.getElementById('status');
-      const fallbackBox = document.getElementById('fallback');
-      const fallbackText = document.getElementById('fallback-text');
+      const hero = document.getElementById("hero");
+      const h1 = document.getElementById("hero-h1");
+      const h2 = document.getElementById("hero-h2");
+      const statusBox = document.getElementById("status");
+      const fallbackBox = document.getElementById("fallback");
+      const fallbackText = document.getElementById("fallback-text");
       const checkboxes = {
-        dark: document.getElementById('opt-dark'),
-        centre: document.getElementById('opt-centre'),
-        minHeight: document.getElementById('opt-height'),
-        showSubheading: document.getElementById('opt-sub'),
-        h1Serif: document.getElementById('opt-h1-serif'),
-        h2Serif: document.getElementById('opt-h2-serif'),
-        gradientOn: document.getElementById('opt-gradient'),
+        dark: document.getElementById("opt-dark"),
+        centre: document.getElementById("opt-centre"),
+        minHeight: document.getElementById("opt-height"),
+        showSubheading: document.getElementById("opt-sub"),
+        h1Serif: document.getElementById("opt-h1-serif"),
+        h2Serif: document.getElementById("opt-h2-serif"),
+        gradientOn: document.getElementById("opt-gradient"),
       };
       // Each slider has a matching <output> that shows its value
       const spacingControls = {
-        h1Spacing: { slider: document.getElementById('h1-spacing'), output: document.getElementById('h1-spacing-value') },
-        h2Spacing: { slider: document.getElementById('h2-spacing'), output: document.getElementById('h2-spacing-value') },
+        h1Spacing: {
+          slider: document.getElementById("h1-spacing"),
+          output: document.getElementById("h1-spacing-value"),
+        },
+        h2Spacing: {
+          slider: document.getElementById("h2-spacing"),
+          output: document.getElementById("h2-spacing-value"),
+        },
       };
-      const h2Effects = document.getElementById('h2-effects');
-      const spacingStyles = document.getElementById('hero-spacing');
+      const h2Effects = document.getElementById("h2-effects");
+      const spacingStyles = document.getElementById("hero-spacing");
 
       // Palette: elements, names and which setting each target changes
-      const paletteBox = document.getElementById('palette');
-      const swatchStyles = document.getElementById('swatch-styles');
-      const colourStyles = document.getElementById('hero-colors');
-      const selectedText = document.getElementById('palette-selected');
-      const targetH2Button = document.getElementById('target-h2');
-      const colourKeys = { background: 'bgColour', start: 'gradStart', end: 'gradEnd', h1: 'h1Colour', h2: 'h2Colour' };
-      const directionBox = document.getElementById('direction-box');
-      const directionSelect = document.getElementById('gradient-direction');
-      const targetLabels = { background: 'Background', start: 'Start colour', end: 'End colour', h1: 'H1', h2: 'H2' };
-      const colourFamilies = ['slate', 'gray', 'zinc', 'neutral', 'stone', 'red', 'orange', 'amber', 'yellow', 'lime', 'green', 'emerald', 'teal', 'cyan', 'sky', 'blue', 'indigo', 'violet', 'purple', 'fuchsia', 'pink', 'rose'];
-      const colourShades = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950];
+      const paletteBox = document.getElementById("palette");
+      const swatchStyles = document.getElementById("swatch-styles");
+      const colourStyles = document.getElementById("hero-colors");
+      const selectedText = document.getElementById("palette-selected");
+      const targetH2Button = document.getElementById("target-h2");
+      const colourKeys = {
+        background: "bgColour",
+        start: "gradStart",
+        end: "gradEnd",
+        h1: "h1Colour",
+        h2: "h2Colour",
+      };
+      const directionBox = document.getElementById("direction-box");
+      const directionSelect = document.getElementById("gradient-direction");
+      const targetLabels = {
+        background: "Background",
+        start: "Start colour",
+        end: "End colour",
+        h1: "H1",
+        h2: "H2",
+      };
+      const colourFamilies = [
+        "slate",
+        "gray",
+        "zinc",
+        "neutral",
+        "stone",
+        "red",
+        "orange",
+        "amber",
+        "yellow",
+        "lime",
+        "green",
+        "emerald",
+        "teal",
+        "cyan",
+        "sky",
+        "blue",
+        "indigo",
+        "violet",
+        "purple",
+        "fuchsia",
+        "pink",
+        "rose",
+      ];
+      const colourShades = [
+        50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950,
+      ];
       const presets = {
-        light: { bgColour: 'slate-50', h1Colour: 'slate-900', h2Colour: 'slate-700' },
-        dark: { bgColour: 'slate-900', h1Colour: 'slate-50', h2Colour: 'slate-300' },
+        light: {
+          bgColour: "slate-50",
+          h1Colour: "slate-900",
+          h2Colour: "slate-700",
+        },
+        dark: {
+          bgColour: "slate-900",
+          h1Colour: "slate-50",
+          h2Colour: "slate-300",
+        },
       };
 
       // Read each checkbox's checked property (true or false)
@@ -341,25 +507,27 @@
         }
         // Range inputs give text, so convert to a number (rounded to avoid 0.0100000002)
         for (const name in spacingControls) {
-          settings[name] = Number(Number(spacingControls[name].slider.value).toFixed(3));
+          settings[name] = Number(
+            Number(spacingControls[name].slider.value).toFixed(3),
+          );
         }
       }
 
       // Turn named classes on or off. The heading elements are never replaced,
       // so the edited text and cursor position are kept.
       function applySettings() {
-        hero.classList.toggle('hero-dark', settings.dark);
-        hero.classList.toggle('hero-light', !settings.dark);
-        hero.classList.toggle('hero-centre', settings.centre);
-        hero.classList.toggle('hero-min-height', settings.minHeight);
+        hero.classList.toggle("hero-dark", settings.dark);
+        hero.classList.toggle("hero-light", !settings.dark);
+        hero.classList.toggle("hero-centre", settings.centre);
+        hero.classList.toggle("hero-min-height", settings.minHeight);
         h2.hidden = !settings.showSubheading;
         h2Effects.disabled = !settings.showSubheading;
 
         // Font choice: named classes defined in the shared hero stylesheet
-        h1.classList.toggle('heading-serif', settings.h1Serif);
-        h1.classList.toggle('heading-sans', !settings.h1Serif);
-        h2.classList.toggle('heading-serif', settings.h2Serif);
-        h2.classList.toggle('heading-sans', !settings.h2Serif);
+        h1.classList.toggle("heading-serif", settings.h1Serif);
+        h1.classList.toggle("heading-sans", !settings.h1Serif);
+        h2.classList.toggle("heading-serif", settings.h2Serif);
+        h2.classList.toggle("heading-sans", !settings.h2Serif);
 
         updateLetterSpacing();
 
@@ -376,11 +544,11 @@
       function fixPaletteTarget() {
         const target = settings.paletteTarget;
         const isHidden =
-          (target === 'h2' && !settings.showSubheading) ||
-          (settings.gradientOn && target === 'background') ||
-          (!settings.gradientOn && (target === 'start' || target === 'end'));
+          (target === "h2" && !settings.showSubheading) ||
+          (settings.gradientOn && target === "background") ||
+          (!settings.gradientOn && (target === "start" || target === "end"));
         if (isHidden) {
-          settings.paletteTarget = settings.gradientOn ? 'start' : 'background';
+          settings.paletteTarget = settings.gradientOn ? "start" : "background";
         }
       }
 
@@ -388,152 +556,211 @@
       function startGradient() {
         if (settings.gradientOn && !settings.gradientStarted) {
           settings.gradStart = settings.bgColour;
-          settings.gradEnd = 'blue-500';
+          settings.gradEnd = "blue-500";
           settings.gradientStarted = true;
         }
       }
 
       // Build the swatch grid and the CSS rule that colours each swatch
       function buildPalette() {
-        const grid = document.createElement('div');
-        grid.className = 'palette-grid';
+        const grid = document.createElement("div");
+        grid.className = "palette-grid";
         const swatchRules = [];
 
         function addLabel(text, extraClass) {
-          const label = document.createElement('span');
-          label.className = 'palette-label ' + (extraClass || '');
+          const label = document.createElement("span");
+          label.className = "palette-label " + (extraClass || "");
           label.textContent = text;
           grid.append(label);
         }
         function addSwatch(colourName, accessibleName) {
-          const button = document.createElement('button');
-          button.type = 'button';
-          button.className = 'swatch';
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = "swatch";
           button.dataset.color = colourName;
           button.title = colourName;
-          button.setAttribute('aria-label', accessibleName);
-          button.setAttribute('aria-pressed', 'false');
+          button.setAttribute("aria-label", accessibleName);
+          button.setAttribute("aria-pressed", "false");
           grid.append(button);
-          swatchRules.push('.swatch[data-color="' + colourName + '"] { background-color: var(--color-' + colourName + '); }');
+          swatchRules.push(
+            '.swatch[data-color="' +
+              colourName +
+              '"] { background-color: var(--color-' +
+              colourName +
+              "); }",
+          );
         }
 
-        addLabel('');
-        colourShades.forEach(function (shade) { addLabel(String(shade)); });
+        addLabel("");
+        colourShades.forEach(function (shade) {
+          addLabel(String(shade));
+        });
         colourFamilies.forEach(function (family) {
           const name = family[0].toUpperCase() + family.slice(1);
-          addLabel(name, 'palette-row-label');
-          colourShades.forEach(function (shade) { addSwatch(family + '-' + shade, name + ' ' + shade); });
+          addLabel(name, "palette-row-label");
+          colourShades.forEach(function (shade) {
+            addSwatch(family + "-" + shade, name + " " + shade);
+          });
         });
-        addLabel('Black, white', 'palette-row-label');
-        addSwatch('black', 'Black');
-        addSwatch('white', 'White');
+        addLabel("Black, white", "palette-row-label");
+        addSwatch("black", "Black");
+        addSwatch("white", "White");
 
         paletteBox.append(grid);
-        swatchStyles.textContent = swatchRules.join('\n');
+        swatchStyles.textContent = swatchRules.join("\n");
       }
 
       // Background rule: a gradient image, or the saved solid colour with no image
       function buildBackgroundCss() {
-        const solid = '      background-color: var(--color-' + settings.bgColour + ');\n';
+        const solid =
+          "      background-color: var(--color-" + settings.bgColour + ");\n";
         if (!settings.gradientOn) {
-          return '    header.hero {\n' + solid + '      background-image: none;\n    }\n';
+          return (
+            "    header.hero {\n" +
+            solid +
+            "      background-image: none;\n    }\n"
+          );
         }
-        return '    header.hero {\n' + solid +
-          '      background-image: linear-gradient(\n        ' + settings.gradDirection +
-          ',\n        var(--color-' + settings.gradStart + '),\n        var(--color-' + settings.gradEnd + ')\n      );\n    }\n';
+        return (
+          "    header.hero {\n" +
+          solid +
+          "      background-image: linear-gradient(\n        " +
+          settings.gradDirection +
+          ",\n        var(--color-" +
+          settings.gradStart +
+          "),\n        var(--color-" +
+          settings.gradEnd +
+          ")\n      );\n    }\n"
+        );
       }
 
       // CSS rules for the colours (used by both the preview and the export)
       function buildColourCss() {
-        return buildBackgroundCss() +
-          '    header.hero h1 {\n      color: var(--color-' + settings.h1Colour + ');\n    }\n' +
-          '    header.hero h2 {\n      color: var(--color-' + settings.h2Colour + ');\n    }';
+        return (
+          buildBackgroundCss() +
+          "    header.hero h1 {\n      color: var(--color-" +
+          settings.h1Colour +
+          ");\n    }\n" +
+          "    header.hero h2 {\n      color: var(--color-" +
+          settings.h2Colour +
+          ");\n    }"
+        );
       }
 
       // Show the active target, the selected swatch and apply the colours
       function updatePalette() {
         const activeColour = settings[colourKeys[settings.paletteTarget]];
-        document.querySelectorAll('.target-button').forEach(function (button) {
-          button.setAttribute('aria-pressed', String(button.dataset.target === settings.paletteTarget));
+        document.querySelectorAll(".target-button").forEach(function (button) {
+          button.setAttribute(
+            "aria-pressed",
+            String(button.dataset.target === settings.paletteTarget),
+          );
         });
         targetH2Button.disabled = !settings.showSubheading;
-        document.querySelector('[data-target="background"]').hidden = settings.gradientOn;
-        document.querySelector('[data-target="start"]').hidden = !settings.gradientOn;
-        document.querySelector('[data-target="end"]').hidden = !settings.gradientOn;
+        document.querySelector('[data-target="background"]').hidden =
+          settings.gradientOn;
+        document.querySelector('[data-target="start"]').hidden =
+          !settings.gradientOn;
+        document.querySelector('[data-target="end"]').hidden =
+          !settings.gradientOn;
         directionBox.hidden = !settings.gradientOn;
         directionSelect.value = settings.gradDirection;
-        document.querySelectorAll('.swatch').forEach(function (swatch) {
-          swatch.setAttribute('aria-pressed', String(swatch.dataset.color === activeColour));
+        document.querySelectorAll(".swatch").forEach(function (swatch) {
+          swatch.setAttribute(
+            "aria-pressed",
+            String(swatch.dataset.color === activeColour),
+          );
         });
-        selectedText.textContent = targetLabels[settings.paletteTarget] + ' colour: ' + activeColour;
+        selectedText.textContent =
+          targetLabels[settings.paletteTarget] + " colour: " + activeColour;
         colourStyles.textContent = buildColourCss();
       }
 
       // CSS rules for letter spacing (used by both the preview and the export)
       function buildSpacingCss() {
-        return '    .hero h1 {\n      letter-spacing: ' + settings.h1Spacing + 'em;\n    }\n' +
-          '    .hero h2 {\n      letter-spacing: ' + settings.h2Spacing + 'em;\n    }';
+        return (
+          "    .hero h1 {\n      letter-spacing: " +
+          settings.h1Spacing +
+          "em;\n    }\n" +
+          "    .hero h2 {\n      letter-spacing: " +
+          settings.h2Spacing +
+          "em;\n    }"
+        );
       }
 
       function updateLetterSpacing() {
         for (const name in spacingControls) {
-          spacingControls[name].output.value = settings[name] + 'em';
+          spacingControls[name].output.value = settings[name] + "em";
         }
         spacingStyles.textContent = buildSpacingCss();
       }
 
       function fontClass(isSerif) {
-        return isSerif ? 'heading-serif' : 'heading-sans';
+        return isSerif ? "heading-serif" : "heading-sans";
       }
 
       // Escape text so &, < and > stay as text in the exported HTML
       function escapeHtml(text) {
-        return text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        return text
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;");
       }
 
       // Build the complete standalone page as a string (fonts + spacing included)
       function buildExportHtml() {
         const heroClasses = [
-          'hero',
-          settings.dark ? 'hero-dark' : 'hero-light',
-          settings.centre ? 'hero-centre' : '',
-          settings.minHeight ? 'hero-min-height' : '',
-        ].filter(Boolean).join(' ');
+          "hero",
+          settings.dark ? "hero-dark" : "hero-light",
+          settings.centre ? "hero-centre" : "",
+          settings.minHeight ? "hero-min-height" : "",
+        ]
+          .filter(Boolean)
+          .join(" ");
 
         const subheading = settings.showSubheading
-          ? '\n      <h2 class="' + fontClass(settings.h2Serif) + '">' + escapeHtml(h2.textContent.trim()) + '</h2>'
-          : '';
-        const css = document.getElementById('hero-styles').textContent.trim();
+          ? '\n      <h2 class="' +
+            fontClass(settings.h2Serif) +
+            '">' +
+            escapeHtml(h2.textContent.trim()) +
+            "</h2>"
+          : "";
+        const css = document.getElementById("hero-styles").textContent.trim();
 
         return [
-          '<!DOCTYPE html>',
+          "<!DOCTYPE html>",
           '<html lang="en">',
-          '  <head>',
+          "  <head>",
           '    <meta charset="UTF-8" />',
           '    <meta name="viewport" content="width=device-width, initial-scale=1.0" />',
-          '    <title>Hero Block</title>',
+          "    <title>Hero Block</title>",
           '    <meta name="description" content="Short, unique description of web page. Often used as the snippet shown in search results. About 120 characters is ideal.">',
           '    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"><\/script>',
           '    <style type="text/tailwindcss">',
           css,
-          '    </style>',
+          "    </style>",
           '    <style type="text/tailwindcss">',
           buildColourCss(),
-          '    </style>',
-          '    <style>',
+          "    </style>",
+          "    <style>",
           buildSpacingCss(),
-          '    </style>',
-          '  </head>',
-          '  <body>',
+          "    </style>",
+          "  </head>",
+          "  <body>",
           '    <header class="' + heroClasses + '">',
           '      <div class="hero-content">',
-          '      <h1 class="' + fontClass(settings.h1Serif) + '">' + escapeHtml(h1.textContent.trim()) + '</h1>' + subheading,
-          '      </div>',
-          '    </header>',
-          '  </body>',
-          '</html>',
-          '',
-        ].join('\n');
+          '      <h1 class="' +
+            fontClass(settings.h1Serif) +
+            '">' +
+            escapeHtml(h1.textContent.trim()) +
+            "</h1>" +
+            subheading,
+          "      </div>",
+          "    </header>",
+          "  </body>",
+          "</html>",
+          "",
+        ].join("\n");
       }
 
       // Keep the manual-copy textarea up to date
@@ -548,10 +775,11 @@
         try {
           await navigator.clipboard.writeText(html);
           fallbackBox.hidden = true;
-          statusBox.textContent = 'HTML copied—paste it into VS Code.';
+          statusBox.textContent = "HTML copied—paste it into VS Code.";
         } catch (error) {
           fallbackBox.hidden = false;
-          statusBox.textContent = 'Automatic copy is unavailable. Copy the HTML from the box below.';
+          statusBox.textContent =
+            "Automatic copy is unavailable. Copy the HTML from the box below.";
           fallbackText.focus();
           fallbackText.select();
         }
@@ -559,19 +787,21 @@
 
       // Editable headings: plain text only, one line only
       function makePlainText(heading) {
-        heading.addEventListener('paste', function (event) {
+        heading.addEventListener("paste", function (event) {
           event.preventDefault();
-          const text = event.clipboardData.getData('text/plain').replace(/\s+/g, ' ');
-          document.execCommand('insertText', false, text);
+          const text = event.clipboardData
+            .getData("text/plain")
+            .replace(/\s+/g, " ");
+          document.execCommand("insertText", false, text);
         });
-        heading.addEventListener('keydown', function (event) {
-          if (event.key === 'Enter') event.preventDefault();
+        heading.addEventListener("keydown", function (event) {
+          if (event.key === "Enter") event.preventDefault();
         });
-        heading.addEventListener('input', refreshFallback);
+        heading.addEventListener("input", refreshFallback);
       }
 
       for (const name in checkboxes) {
-        checkboxes[name].addEventListener('change', function (event) {
+        checkboxes[name].addEventListener("change", function (event) {
           readSettings();
           if (event.target === checkboxes.dark) applyPreset();
           if (event.target === checkboxes.gradientOn) startGradient();
@@ -581,7 +811,7 @@
       }
       for (const name in spacingControls) {
         // 'input' fires continuously while the slider is dragged
-        spacingControls[name].slider.addEventListener('input', function () {
+        spacingControls[name].slider.addEventListener("input", function () {
           readSettings();
           applySettings();
           refreshFallback();
@@ -589,26 +819,28 @@
       }
       makePlainText(h1);
       makePlainText(h2);
-      document.getElementById('copy-button').addEventListener('click', copyHtml);
+      document
+        .getElementById("copy-button")
+        .addEventListener("click", copyHtml);
 
       // Choose which colour the palette changes
-      document.querySelectorAll('.target-button').forEach(function (button) {
-        button.addEventListener('click', function () {
+      document.querySelectorAll(".target-button").forEach(function (button) {
+        button.addEventListener("click", function () {
           settings.paletteTarget = button.dataset.target;
           updatePalette();
         });
       });
 
       // One listener for all swatches: the clicked swatch sets the active target's colour
-      paletteBox.addEventListener('click', function (event) {
-        const swatch = event.target.closest('.swatch');
+      paletteBox.addEventListener("click", function (event) {
+        const swatch = event.target.closest(".swatch");
         if (!swatch) return;
         settings[colourKeys[settings.paletteTarget]] = swatch.dataset.color;
         updatePalette();
         refreshFallback();
       });
 
-      directionSelect.addEventListener('change', function () {
+      directionSelect.addEventListener("change", function () {
         settings.gradDirection = directionSelect.value;
         updatePalette();
         refreshFallback();

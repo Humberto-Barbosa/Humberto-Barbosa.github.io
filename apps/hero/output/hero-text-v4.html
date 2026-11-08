@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Generated Hero Block v4</title>
+    <meta
+      name="description"
+      content="A hero block created with my Hero Block Generator, using Tailwind CSS with a gradient background and custom text."
+    />
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+      .hero {
+        @apply flex items-center px-6 py-16 md:px-16 md:py-24;
+      }
+      .hero-content {
+        @apply w-full max-w-3xl;
+      }
+      .hero h1 {
+        @apply text-4xl font-bold leading-tight break-words md:text-6xl;
+      }
+      .hero h2 {
+        @apply mt-4 max-w-2xl text-lg leading-snug break-words md:text-2xl;
+      }
+      .hero h2[hidden] {
+        display: none;
+      }
+      .hero-light {
+        @apply bg-slate-50;
+      }
+      .hero-light h1 {
+        @apply text-slate-900;
+      }
+      .hero-light h2 {
+        @apply text-slate-700;
+      }
+      .hero-dark {
+        @apply bg-slate-900;
+      }
+      .hero-dark h1 {
+        @apply text-slate-50;
+      }
+      .hero-dark h2 {
+        @apply text-slate-300;
+      }
+      .hero-centre {
+        @apply justify-center text-center;
+      }
+      .hero-centre h2 {
+        @apply mx-auto;
+      }
+      .hero-min-height {
+        @apply min-h-[480px] md:min-h-[85vh];
+      }
+      .hero h1.heading-sans,
+      .hero h2.heading-sans {
+        @apply font-sans;
+      }
+      .hero h1.heading-serif,
+      .hero h2.heading-serif {
+        @apply font-serif;
+      }
+    </style>
+    <style type="text/tailwindcss">
+      header.hero {
+        background-color: var(--color-slate-900);
+        background-image: linear-gradient(
+          to right,
+          var(--color-blue-700),
+          var(--color-purple-900)
+        );
+      }
+      header.hero h1 {
+        color: var(--color-slate-50);
+      }
+      header.hero h2 {
+        color: var(--color-slate-300);
+      }
+    </style>
+    <style>
+      .hero h1 {
+        letter-spacing: 0.05em;
+      }
+      .hero h2 {
+        letter-spacing: -0.025em;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="hero hero-dark hero-centre hero-min-height">
+      <div class="hero-content">
+        <h1 class="heading-serif">My Hero Block Design Testing</h1>
+        <h2 class="heading-serif">
+          Testing to lern new skills. Integer vitae libero ac risus egestas
+          placerat.
+        </h2>
+      </div>
+    </header>
+  </body>
+</html>

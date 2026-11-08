@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hero Block Generator</title>
+    <meta name="description" content="Short, unique description of web page. Often used as the snippet shown in search results. About 120 characters is ideal.">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- HERO STYLES: shared by the preview and the exported page -->
+    <style type="text/tailwindcss" id="hero-styles">
+      .hero {
+        @apply flex items-center px-6 py-16 md:px-16 md:py-24;
+      }
+      .hero-content {
+        @apply w-full max-w-3xl;
+      }
+      .hero h1 {
+        @apply text-4xl font-bold leading-tight break-words md:text-6xl;
+      }
+      .hero h2 {
+        @apply mt-4 max-w-2xl text-lg leading-snug break-words md:text-2xl;
+      }
+      .hero h2[hidden] {
+        display: none;
+      }
+      .hero-light {
+        @apply bg-slate-50;
+      }
+      .hero-light h1 {
+        @apply text-slate-900;
+      }
+      .hero-light h2 {
+        @apply text-slate-700;
+      }
+      .hero-dark {
+        @apply bg-slate-900;
+      }
+      .hero-dark h1 {
+        @apply text-slate-50;
+      }
+      .hero-dark h2 {
+        @apply text-slate-300;
+      }
+      .hero-centre {
+        @apply justify-center text-center;
+      }
+      .hero-centre h2 {
+        @apply mx-auto;
+      }
+      .hero-min-height {
+        @apply min-h-[480px] md:min-h-[85vh];
+      }
+      .hero h1.heading-sans,
+      .hero h2.heading-sans {
+        @apply font-sans;
+      }
+      .hero h1.heading-serif,
+      .hero h2.heading-serif {
+        @apply font-serif;
+      }
+    </style>
+
+    <!-- LETTER SPACING: rewritten by JavaScript and also exported -->
+    <style id="hero-spacing">
+      .hero h1 {
+        letter-spacing: -0.05em;
+      }
+      .hero h2 {
+        letter-spacing: -0.025em;
+      }
+    </style>
+
+    <!-- EDITOR STYLES: only used by the app, never exported -->
+    <style type="text/tailwindcss" id="editor-styles">
+      .editor-page {
+        @apply bg-stone-100 pb-28 text-slate-800;
+      }
+      .editor-panel {
+        @apply mx-auto my-4 flex max-w-4xl flex-wrap gap-x-6 gap-y-3 rounded-lg border border-stone-300 bg-white px-5 py-4;
+      }
+      .editor-option {
+        @apply flex cursor-pointer items-center gap-2 text-sm font-medium;
+      }
+      .editor-option input {
+        @apply h-5 w-5 cursor-pointer accent-blue-700;
+      }
+      .editor-option input:focus-visible {
+        outline: 3px solid #1d4ed8;
+        outline-offset: 2px;
+      }
+      .editor-effects {
+        @apply mx-auto mb-3 grid max-w-4xl gap-3 md:grid-cols-2;
+      }
+      .editor-group {
+        @apply flex flex-col gap-3 rounded-lg border border-stone-300 bg-white px-5 py-4;
+      }
+      .editor-group:disabled {
+        @apply opacity-50;
+      }
+      .editor-group legend {
+        @apply px-1 text-sm font-semibold;
+      }
+      .editor-slider {
+        @apply flex flex-wrap items-center gap-3 text-sm font-medium;
+      }
+      .editor-slider input {
+        @apply w-40 accent-blue-700;
+      }
+      .editor-slider input:focus-visible {
+        outline: 3px solid #1d4ed8;
+        outline-offset: 2px;
+      }
+      .editor-slider output {
+        @apply font-mono text-xs;
+      }
+      .editor-hint {
+        @apply mx-auto mb-3 max-w-4xl px-1 text-sm text-slate-600;
+      }
+      .hero [contenteditable]:focus {
+        outline: 3px dashed #2563eb;
+        outline-offset: 6px;
+      }
+      .copy-button {
+        @apply fixed right-4 bottom-4 rounded-lg bg-blue-700 px-5 py-3 font-semibold text-white shadow-lg hover:bg-blue-800;
+      }
+      .copy-button:focus-visible {
+        outline: 3px solid #1e3a8a;
+        outline-offset: 3px;
+      }
+      .editor-status {
+        @apply mx-auto mt-3 max-w-4xl px-1 text-sm font-medium text-green-800;
+      }
+      .editor-fallback {
+        @apply mx-auto mt-4 max-w-4xl px-1;
+      }
+      .editor-fallback textarea {
+        @apply mt-1 h-56 w-full rounded border border-stone-400 bg-white p-2 font-mono text-xs;
+      }
+    </style>
+  </head>
+
+  <body class="editor-page">
+    <div class="editor-panel" role="group" aria-label="Hero settings">
+      <label class="editor-option"><input type="checkbox" id="opt-dark" /> Dark appearance</label>
+      <label class="editor-option"><input type="checkbox" id="opt-centre" /> Centre text</label>
+      <label class="editor-option"><input type="checkbox" id="opt-height" checked /> Minimum height</label>
+      <label class="editor-option"><input type="checkbox" id="opt-sub" checked /> Show subheading</label>
+    </div>
+
+    <div class="editor-effects">
+      <fieldset class="editor-group" id="h1-effects">
+        <legend>H1 text effects</legend>
+        <label class="editor-option"><input type="checkbox" id="opt-h1-serif" /> Serif font</label>
+        <div class="editor-slider">
+          <label for="h1-spacing">Letter spacing</label>
+          <input type="range" id="h1-spacing" min="-0.05" max="0.1" step="0.005" value="-0.05" />
+          <output id="h1-spacing-value" for="h1-spacing">-0.05em</output>
+        </div>
+      </fieldset>
+      <fieldset class="editor-group" id="h2-effects">
+        <legend>H2 text effects</legend>
+        <label class="editor-option"><input type="checkbox" id="opt-h2-serif" /> Serif font</label>
+        <div class="editor-slider">
+          <label for="h2-spacing">Letter spacing</label>
+          <input type="range" id="h2-spacing" min="-0.05" max="0.1" step="0.005" value="-0.025" />
+          <output id="h2-spacing-value" for="h2-spacing">-0.025em</output>
+        </div>
+      </fieldset>
+    </div>
+
+    <p class="editor-hint" id="edit-hint">Click a heading to edit the text.</p>
+
+    <!-- The hero: the part that gets exported -->
+    <header class="hero hero-light hero-min-height" id="hero">
+      <div class="hero-content">
+        <h1 id="hero-h1" contenteditable="true" aria-describedby="edit-hint">Lorem ipsum dolor sit amet</h1>
+        <h2 id="hero-h2" contenteditable="true" aria-describedby="edit-hint">Consectetur adipiscing elit. Integer vitae libero ac risus egestas placerat.</h2>
+      </div>
+    </header>
+
+    <p class="editor-status" id="status" role="status" aria-live="polite"></p>
+
+    <div class="editor-fallback" id="fallback" hidden>
+      <label for="fallback-text">Copy this HTML manually (select all, then copy):</label>
+      <textarea id="fallback-text" readonly></textarea>
+    </div>
+
+    <button type="button" class="copy-button" id="copy-button">Copy HTML</button>
+
+    <script>
+      // Settings: one true/false value per checkbox
+      const settings = {
+        dark: false, centre: false, minHeight: true, showSubheading: true,
+        h1Serif: false, h2Serif: false, h1Spacing: -0.05, h2Spacing: -0.025,
+      };
+
+      const hero = document.getElementById('hero');
+      const h1 = document.getElementById('hero-h1');
+      const h2 = document.getElementById('hero-h2');
+      const statusBox = document.getElementById('status');
+      const fallbackBox = document.getElementById('fallback');
+      const fallbackText = document.getElementById('fallback-text');
+      const checkboxes = {
+        dark: document.getElementById('opt-dark'),
+        centre: document.getElementById('opt-centre'),
+        minHeight: document.getElementById('opt-height'),
+        showSubheading: document.getElementById('opt-sub'),
+        h1Serif: document.getElementById('opt-h1-serif'),
+        h2Serif: document.getElementById('opt-h2-serif'),
+      };
+      // Each slider has a matching <output> that shows its value
+      const spacingControls = {
+        h1Spacing: { slider: document.getElementById('h1-spacing'), output: document.getElementById('h1-spacing-value') },
+        h2Spacing: { slider: document.getElementById('h2-spacing'), output: document.getElementById('h2-spacing-value') },
+      };
+      const h2Effects = document.getElementById('h2-effects');
+      const spacingStyles = document.getElementById('hero-spacing');
+
+      // Read each checkbox's checked property (true or false)
+      function readSettings() {
+        for (const name in checkboxes) {
+          settings[name] = checkboxes[name].checked;
+        }
+        // Range inputs give text, so convert to a number (rounded to avoid 0.0100000002)
+        for (const name in spacingControls) {
+          settings[name] = Number(Number(spacingControls[name].slider.value).toFixed(3));
+        }
+      }
+
+      // Turn named classes on or off. The heading elements are never replaced,
+      // so the edited text and cursor position are kept.
+      function applySettings() {
+        hero.classList.toggle('hero-dark', settings.dark);
+        hero.classList.toggle('hero-light', !settings.dark);
+        hero.classList.toggle('hero-centre', settings.centre);
+        hero.classList.toggle('hero-min-height', settings.minHeight);
+        h2.hidden = !settings.showSubheading;
+        h2Effects.disabled = !settings.showSubheading;
+
+        // Font choice: named classes defined in the shared hero stylesheet
+        h1.classList.toggle('heading-serif', settings.h1Serif);
+        h1.classList.toggle('heading-sans', !settings.h1Serif);
+        h2.classList.toggle('heading-serif', settings.h2Serif);
+        h2.classList.toggle('heading-sans', !settings.h2Serif);
+
+        updateLetterSpacing();
+      }
+
+      // CSS rules for letter spacing (used by both the preview and the export)
+      function buildSpacingCss() {
+        return '    .hero h1 {\n      letter-spacing: ' + settings.h1Spacing + 'em;\n    }\n' +
+          '    .hero h2 {\n      letter-spacing: ' + settings.h2Spacing + 'em;\n    }';
+      }
+
+      function updateLetterSpacing() {
+        for (const name in spacingControls) {
+          spacingControls[name].output.value = settings[name] + 'em';
+        }
+        spacingStyles.textContent = buildSpacingCss();
+      }
+
+      function fontClass(isSerif) {
+        return isSerif ? 'heading-serif' : 'heading-sans';
+      }
+
+      // Escape text so &, < and > stay as text in the exported HTML
+      function escapeHtml(text) {
+        return text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      }
+
+      // Build the complete standalone page as a string (fonts + spacing included)
+      function buildExportHtml() {
+        const heroClasses = [
+          'hero',
+          settings.dark ? 'hero-dark' : 'hero-light',
+          settings.centre ? 'hero-centre' : '',
+          settings.minHeight ? 'hero-min-height' : '',
+        ].filter(Boolean).join(' ');
+
+        const subheading = settings.showSubheading
+          ? '\n      <h2 class="' + fontClass(settings.h2Serif) + '">' + escapeHtml(h2.textContent.trim()) + '</h2>'
+          : '';
+        const css = document.getElementById('hero-styles').textContent.trim();
+
+        return [
+          '<!DOCTYPE html>',
+          '<html lang="en">',
+          '  <head>',
+          '    <meta charset="UTF-8" />',
+          '    <meta name="viewport" content="width=device-width, initial-scale=1.0" />',
+          '    <title>Hero Block</title>',
+          '    <meta name="description" content="Short, unique description of web page. Often used as the snippet shown in search results. About 120 characters is ideal.">',
+          '    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"><\/script>',
+          '    <style type="text/tailwindcss">',
+          css,
+          '    </style>',
+          '    <style>',
+          buildSpacingCss(),
+          '    </style>',
+          '  </head>',
+          '  <body>',
+          '    <header class="' + heroClasses + '">',
+          '      <div class="hero-content">',
+          '      <h1 class="' + fontClass(settings.h1Serif) + '">' + escapeHtml(h1.textContent.trim()) + '</h1>' + subheading,
+          '      </div>',
+          '    </header>',
+          '  </body>',
+          '</html>',
+          '',
+        ].join('\n');
+      }
+
+      // Keep the manual-copy textarea up to date
+      function refreshFallback() {
+        fallbackText.value = buildExportHtml();
+      }
+
+      // Copy HTML button: Clipboard API first, textarea if it fails
+      async function copyHtml() {
+        const html = buildExportHtml();
+        fallbackText.value = html;
+        try {
+          await navigator.clipboard.writeText(html);
+          fallbackBox.hidden = true;
+          statusBox.textContent = 'HTML copied—paste it into VS Code.';
+        } catch (error) {
+          fallbackBox.hidden = false;
+          statusBox.textContent = 'Automatic copy is unavailable. Copy the HTML from the box below.';
+          fallbackText.focus();
+          fallbackText.select();
+        }
+      }
+
+      // Editable headings: plain text only, one line only
+      function makePlainText(heading) {
+        heading.addEventListener('paste', function (event) {
+          event.preventDefault();
+          const text = event.clipboardData.getData('text/plain').replace(/\s+/g, ' ');
+          document.execCommand('insertText', false, text);
+        });
+        heading.addEventListener('keydown', function (event) {
+          if (event.key === 'Enter') event.preventDefault();
+        });
+        heading.addEventListener('input', refreshFallback);
+      }
+
+      for (const name in checkboxes) {
+        checkboxes[name].addEventListener('change', function () {
+          readSettings();
+          applySettings();
+          refreshFallback();
+        });
+      }
+      for (const name in spacingControls) {
+        // 'input' fires continuously while the slider is dragged
+        spacingControls[name].slider.addEventListener('input', function () {
+          readSettings();
+          applySettings();
+          refreshFallback();
+        });
+      }
+      makePlainText(h1);
+      makePlainText(h2);
+      document.getElementById('copy-button').addEventListener('click', copyHtml);
+
+      readSettings();
+      applySettings();
+      refreshFallback();
+    </script>
+  </body>
+</html>
